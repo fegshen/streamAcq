@@ -156,17 +156,6 @@ class PageMain:
 
         # switch-save data
         pre_switch_text = "Save"
-        if Saving._stop_sig:
-            Saving.start()
-            if Saving._stop_sig:
-                pre_switch_text = "Cannot save... Please chech out the configuration!"
-                self.start_saving = False
-                self.is_saving = False
-            else:
-                pre_switch_text = "Save"
-                self.save_start_time = time.time() * 1000
-                self.start_saving = True
-                self.is_saving = True
         self.switch_save = switch_save = Switch(active=not Saving._stop_sig, align='end',margin=[0,0,12,0])
         self.pre_switch = pre_switch = PreText(text=pre_switch_text,align='end')
         swtichp_save = row(
@@ -204,9 +193,9 @@ class PageMain:
 
         # some varible
         self.globalv = 0
-        # self.start_saving = False
+        self.start_saving = False
         self.stop_saving = False
-        # self.is_saving = not Saving._stop_sig
+        self.is_saving = not Saving._stop_sig
 
 
     def __call__(self):
