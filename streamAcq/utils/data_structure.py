@@ -34,7 +34,7 @@ class DataStructure:
             return
 
         head = config['serial']['head']
-        DataStructure.stru['headpattern'] = int(head,16).to_bytes(length=int((len(head)-2)/2))
+        DataStructure.stru['headpattern'] = int(head,16).to_bytes(length=int((len(head)-2)/2),byteorder='big')
 
         nbytesl = [DataStructure.dtype_to_fea[dtype][0] for dtype in config['serial_chsource']["dtype"]]
         unpackl = [DataStructure.dtype_to_fea[dtype][1] for dtype in config['serial_chsource']["dtype"]]
